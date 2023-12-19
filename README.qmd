@@ -2,44 +2,29 @@
 format: gfm
 ---
 
-<!-- README.md is generated from README.qmd. Please edit that file -->
+<!-- README.md is generated from README.qmd. Please edit the qmd file only -->
 
-```{r}
-#| include: false
-# Create pdf and png version of template
-library(tidyverse)
-library(quarto)
-library(magick)
 
-# Render template
-fs::file_copy("_extensions/letter/sigfile.png", "sigfile.png", overwrite = TRUE)
-system("sed -i 's/^#fromsignature/fromsignature/' template.qmd")
-quarto_render(input = "template.qmd")
-system("sed -i 's/^fromsignature/#fromsignature/' template.qmd")
-fs::file_delete(c("AACSB.png","AMBA.png","EQUIS.png","MBSportrait.jpg","monash2.png","sigfile.png"))
-# Convert rendered PDF to PNG
-image_read_pdf("template.pdf", pages = 1) |>
-  image_montage(geometry = "x1000+25+35", tile = 1, bg = "grey92", shadow = TRUE) |>
-  image_convert(format = "png") |>
-  image_write("examples/template.png")
-# Move pdf to examples folder
-fs::file_move("template.pdf", "examples/template.pdf")
-```
+# Macquarie University SoMAPS Letter Template <img src="https://user-images.githubusercontent.com/15133161/200966938-ba6f8413-fa77-4ccb-b16d-d7cf14926057.png" align ="right" alt="" width ="150"/>
 
-# Monash Letter Format Template
+> Template for writing MQ Letter in Quarto. 
+>
+> See information about how-to use this repo template inside the template file.
 
-This is a Quarto template that assists you in creating a letter on Monash University letterhead
+This is a Quarto template that assists you in creating a letter with SoMAPS  header. You can learn more about about Quarto using the official guide <https://quarto.org/docs/guide/>.
+
+This work is modified from the template of Rob J Hyndman @robjhyndman for Monash University.  
 
 ## Creating a new letter
 
-You can use this as a template to create a letter.
+You can use this as a template to create a report.
 To do this, use the following command:
 
 ```bash
-quarto use template numbats/monash-quarto-letter
+quarto use template thomas-fung/mq-letter-quarto
 ```
 
-This will install the extension and create an example qmd file that you can use as a starting place for your letter.
+This will install the extension and create an example qmd file that you can use as a starting place for your report.
 
 ## Installation for existing document
 
@@ -47,7 +32,7 @@ You may also use this format with an existing Quarto project or document.
 From the quarto project or document directory, run the following command to install this format:
 
 ```bash
-quarto install extension numbats/monash-quarto-letter
+quarto install extension thomas-fung/mq-letter-quarto
 ```
 
 ## Example
