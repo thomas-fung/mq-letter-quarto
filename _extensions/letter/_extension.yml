@@ -1,0 +1,10 @@
+title: Macquarie Letter Template
+author: Thomas Fung
+version: 0.1.0
+contributes:
+  formats:
+    pdf:
+      template: mqletter.tex
+      pdf-engine: pdflatex
+      format-resources:
+        - MQ-logo-col.png
