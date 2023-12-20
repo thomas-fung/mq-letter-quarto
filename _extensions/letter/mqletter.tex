@@ -12,29 +12,6 @@ $if(linestretch)$
 \setstretch{$linestretch$}
 $endif$
 
-\usepackage{eso-pic}
-\newcommand\BackgroundPic{
-\put(0,0){
-\parbox[b][\paperheight]{\paperwidth}{%
-\vfill
-\centering
-%\hskip4cm
-\includegraphics[width=\paperwidth,height=\paperheight,
-keepaspectratio]{mapsletterheader.pdf}%
-\veil
-}}}
-
-
-\signature{
-$fromname$\\ 
-$fromtitle$ \\
-%Higher Degree Research Director \\ 
-\faicon{envelope}  \url{mailto:$fromemail$} \\  
- \faicon{phone} $fromphone$
- }
-
-
-
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
@@ -203,9 +180,19 @@ $endif$
 \setlength{\TPVertModule}{1cm}
 
 \makeatletter
+\def\ps@macquarie{%
+\begin{textblock}{4}(2,1)
+\vskip.3cm
+\scalebox{1.6}{\includegraphics[height=2cm]{SoMAPS}}
+\end{textblock}%
+\begin{textblock}{4}(14.6,1)
+\scalebox{1.3}{\includegraphics[height=1.5cm]{MQ-logo-col.png}}
+\end{textblock}%
+
+\def\thepage{}}
 
 \@ifundefined{opening}{}{%
-\renewcommand*{\opening}[1]{\thispagestyle{monash}%
+\renewcommand*{\opening}[1]{\thispagestyle{macquarie}%
    {\@date\par}%
   \vspace{2\parskip}%
   {\raggedright \toname \\ \toaddress \par}%
@@ -229,6 +216,14 @@ $endif$
 % Fix href problems
 \def\href#1{}
 
+\signature{
+$fromname$\\ 
+$fromtitle$ \\
+\faicon{envelope} $fromemail$ \\
+\faicon{phone} $fromphone$
+}
+
+
 $for(header-includes)$
 $header-includes$
 $endfor$
@@ -245,11 +240,16 @@ $include-before$
 $endfor$
 \begin{letter}{$toname$\\$for(toaddress)$$toaddress$$sep$\\$endfor$}
 \setstretch{1}
-\vspace*{1cm}\enlargethispage*{-2cm}
+\vspace*{2.5cm}\enlargethispage*{-2cm}
 \opening{$opening$}
 \setstretch{$spacing$}
 $body$
-\closing{$closing$}
+\bigskip
+\closing{$closing$\\[0.2cm]\hspace*{0.5cm}
+$if(fromsignature)$
+\includegraphics[height=1.5cm]{$fromsignature$}
+$endif$
+}
 $if(ps)$
 \ps{$ps$}
 $endif$

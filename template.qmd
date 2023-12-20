@@ -1,14 +1,14 @@
 ---
 fromname: Pierre Curie
 fromtitle: Professor
-fromemail: Pierre.Curie@monash.edu
-fromphone: +61 3 9905 5555
+fromemail: Pierre.Curie@mq.edu.au
+fromphone: +61 2 9850 8257
 toname: Helen of Troy
 toaddress:
   - University of Greece
   - Athens
-opening: "Dear Helen"
-closing: "Kind regards"
+opening: "Dear Helen,"
+closing: "Kind regards,"
 spacing: 1.4
 ps: |
   PS: Lorem ipsum dolor sit amet, *consectetur* adipiscing elit.
